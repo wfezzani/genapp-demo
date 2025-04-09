@@ -19,4 +19,4 @@ jobs:
       - name: Clone Repo to z/OS Unix System Services
         run:  
           sshpass -p ztec9yo9 ssh -o "StrictHostKeyChecking=no" WFEZZAN@10.3.20.34<<EOF
-          gitClone.sh -r https://github.com/wfezzani/genapp-demo.git -w . -b main
+          . ./.profile && gitClone.sh -r https://github.com/wfezzani/genapp-demo.git -w . -b maingitClone.sh -r https://github.com/wfezzani/genapp-demo.git -w . -b main
