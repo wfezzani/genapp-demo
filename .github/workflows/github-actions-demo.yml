@@ -19,4 +19,4 @@ jobs:
       - name: Clone Repo to z/OS Unix System Services
         run: |
           . ~/.bashrc 
-          zowe rse issue uss ". /u/wfezzan/.profile  && whoami && echo $PATH" --cwd .
+          zowe rse issue uss ". /u/wfezzan/.profile  && whoami && echo $PATH" --cwd . 
