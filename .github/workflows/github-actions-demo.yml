@@ -17,4 +17,4 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Clone Repo to z/OS Unix System Services
-        run: ping 10.3.20.34 
+        run: ssh WFEZZAN@10.3.20.34 ". /u/wfezzan/.profile  && gitClone.sh -r http://gitlab.wis.com/zdevops2/genapp.git -w . -b feature/prepareNextRelease" --cwd .
