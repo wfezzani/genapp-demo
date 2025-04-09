@@ -17,4 +17,4 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Clone Repo to z/OS Unix System Services
-        run: cd /root && . ./bashrc && echo $PATH
+        run: pwd
