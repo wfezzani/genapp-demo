@@ -17,4 +17,4 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Clone Repo to z/OS Unix System Services
-        run: zowe rse issue uss ". ./u/wfezzan/.profile  && gitClone.sh -r https://github.com/wfezzani/genapp-demo.git -w . -b main"
+        run: whoami
