@@ -1,0 +1,47 @@
+{
+	"testCases": [
+		{
+			"dataset": "/genapp/int-tests/lgicdb01-int.rec", 
+			"dateRecorded": "2025099105045000", 
+			"dateReplayed": "2025099095627084", 
+			"jobName": "IBMZEDT", 
+			"jobNumber": "JOB09612", 
+			"userId": "WFEZZAN", 
+			"returnCode": 4, 
+			"transactions": [
+				{
+					"name": "SSC1", 
+					"returnCode": 4, 
+					"issues": {
+						"mismatch": [
+							{
+								"program": "LGTESTC1", 
+								"requestType": "RETURN", 
+								"argument": "COMMAREA", 
+								"recordNumber": 22, 
+								"programLocation": 436, 
+								"mismatchOffset": 18, 
+								"mismatchCols": "-+----2----+----3----+----4----+----5----+----6----+----7----+----8----+---", 
+								"replayed": [
+									"0001bad name", 
+									"FFFF88849898", 
+									"000121405145"
+								], 
+								"recorded": [
+									"0001Andrew  ", 
+									"FFFFC9898A44", 
+									"000115495600"
+								]
+							}
+						]
+					}
+				}, 
+				{
+					"name": "SSC1", 
+					"returnCode": 0
+				}
+			], 
+			"type": "CICS"
+		}
+	]
+}

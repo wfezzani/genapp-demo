@@ -1,0 +1,62 @@
+################################################################
+# LICENSED MATERIALS - PROPERTY OF IBM
+# "RESTRICTED MATERIALS OF IBM"
+# (C) COPYRIGHT IBM CORPORATION 2020, 2023. ALL RIGHTS RESERVED
+# US GOVERNMENT USERS RESTRICTED RIGHTS - USE, DUPLICATION,
+# OR DISCLOSURE RESTRICTED BY GSA ADP SCHEDULE
+# CONTRACT WITH IBM CORPORATION
+################################################################
+
+name: sam
+description: For IBM Z Open Editor 3.2.0 or newer. Wazi's code samples with COBOL, PL/I, and HLASM applications
+version: 3.2.0
+author:
+  name: IBM CORPORATION
+
+propertyGroups:
+  - name: cobol-copybooks
+    language: cobol
+    libraries:
+      - name: syslib
+        type: local
+        locations:
+          - "**/Copybook"
+      - name: syslib
+        type: mvs
+        locations:
+          - "${HLQ}.SAMPLE.COBCOPY"
+      - name: MYLIB
+        type: mvs
+        locations:
+          - ${HLQ}.SAMPLE.COPYLIB
+      - name: MYLIB
+        type: local
+        locations:
+          - "**/COPYLIB-MVS"
+      - name: MYFILE
+        type: local
+        locations:
+          - "**/COPYLIB"
+profiles:
+  - name: dbb-userbuild
+    type: dbb
+    settings:
+      application: GENAPP-B12
+      command: "$DBB_HOME/bin/groovyz"
+      buildScriptPath: "/var/dbb-zappbuild-v3/dbb-zappbuild/build.groovy"
+      buildScriptArgs:
+        - "--userBuild"
+        - "--workspace ${zopeneditor.userbuild.userSettings.dbbWorkspace}"
+        - "--application ${application}"
+        - "--hlq ${zopeneditor.userbuild.userSettings.dbbHlq}"
+        - "--outDir ${zopeneditor.userbuild.userSettings.dbbLogDir}"
+        - "--verbose"
+        - "--debug"
+      additionalDependencies:
+        - application-conf
+        - "zapp*"
+      logFilePatterns:
+        - "${buildFile.basename}.log"
+        - "BuildReport.*"
+
+ 

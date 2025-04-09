@@ -1,0 +1,19 @@
+{
+	"testCases": [
+		{
+			"name": "lgicdb01-int", 
+			"createdBy": "", 
+			"description": "", 
+			"dataset": "/genapp/int-tests/lgicdb01-int.rec", 
+			"type": "CICS", 
+			"userLibs": [
+				{
+					"lib": "WFEZZAN.TAZ.GENAPP.LOAD"
+				}, 
+				{
+					"lib": "WFEZZAN.WDEPLOY.PYTHON.LOADLIB"
+				}
+			]
+		}
+	]
+}

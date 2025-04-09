@@ -1,0 +1,24 @@
+{
+	"testCases": [
+		{
+			"dataset": "/genapp/int-tests/lgicdb01-int.rec", 
+			"dateRecorded": "2025099105045000", 
+			"dateReplayed": "2025099095500060", 
+			"jobName": "IBMZEDT", 
+			"jobNumber": "JOB09611", 
+			"userId": "WFEZZAN", 
+			"returnCode": 0, 
+			"transactions": [
+				{
+					"name": "SSC1", 
+					"returnCode": 0
+				}, 
+				{
+					"name": "SSC1", 
+					"returnCode": 0
+				}
+			], 
+			"type": "CICS"
+		}
+	]
+}
