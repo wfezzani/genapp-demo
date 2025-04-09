@@ -20,3 +20,5 @@ jobs:
         run:  
           sshpass -p ztec9yo9 ssh -o "StrictHostKeyChecking=no" WFEZZAN@10.3.20.34<<EOF
           echo $PATH
+          source .profile
+          echo $PATH
