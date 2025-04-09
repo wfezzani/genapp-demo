@@ -1,0 +1,41 @@
+name: Build
+on:
+    workflow_call:
+        secrets:
+            githubAccessToken:
+                required: true
+        inputs:
+            pipelineType:
+                description: Pipeline Type
+                default: build
+                type: string
+                required: false
+
+env:
+    uniqueWorkspaceId: /u/DMJTA1/workspace/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }} # adding a b to before the number,
+    # to avoid an error caused by repeated build numbers 
+    branch : ${{ github.ref_name }} 
+    application: ${{ github.event.repository.name }}
+    pipelineType: ${{ inputs.pipelineType }}
+    packageName: ${{github.run_id}}
+    zosHostname: 9.76.61.15
+    zosSFTPUser: DMJTA1@9.76.61.15
+
+jobs:
+    Setup:
+        runs-on: self-hosted
+        steps:
+         - name: CI-CD pipeline parameter printout
+           run: |
+            echo " "
+            echo "Following are the CI-CD pipeline parameters"
+            echo "*******************************************"
+            echo "uniqueWorkspaceId                  = ${{ env.uniqueWorkspaceId}}"
+            echo "branch                             = ${{ env.branch}}"
+            echo "application                        = ${{ env.application}}"
+            echo "pipelineType                       = ${{ env.pipelineType}}"
+            echo "packageName                        = ${{ env.packageName}}"
+            echo "zosHostname                        = ${{ env.zosHostname}}"
+            echo "zosSFTPUser                        = ${{ env.zosSFTPUser}}"
+         - name: Clone Repo to z/OS Unix System Services
+           run: cd /u/wfezzan 
