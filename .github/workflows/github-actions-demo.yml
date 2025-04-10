@@ -18,4 +18,4 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Clone Repo to z/OS Unix System Services
         run: |
-           run: . ~/.bashrc && zowe rse issue uss ". ./u/wfezzan/.profile  && gitClone.sh -r https://github.com/wfezzani/genapp-demo.git -w . -b main" --cwd .
+           . ~/.bashrc && zowe rse issue uss ". ./u/wfezzan/.profile  && gitClone.sh -r https://github.com/wfezzani/genapp-demo.git -w . -b main" --cwd .
