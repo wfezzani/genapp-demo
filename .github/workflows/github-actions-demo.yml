@@ -18,4 +18,5 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Clone Repo to z/OS Unix System Services
         run: |
+          whoami
           sudo /usr/local/bin/zowe rse issue uss ". /u/wfezzan/.profile && whoami" --cwd . 
