@@ -19,4 +19,4 @@ jobs:
       - name: Clone Repo to z/OS Unix System Services
         run: |
           whoami
-          sudo /usr/local/bin/zowe rse issue uss
+          sudo /usr/local/bin/zowe rse issue uss "ls" --cwd "/u/wfezzan"
