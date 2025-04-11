@@ -1,6 +1,18 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on:
+    workflow_call:
+        secrets:
+            githubAccessToken:
+                required: true
+        inputs:
+            pipelineType:
+                description: Pipeline Type
+                default: build
+                type: string
+                required: false
+
+
 env:
   uniqueWorkspaceId: /u/wfezzan/builds-github/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }} # adding a b to before the number,
     # to avoid an error caused by repeated build numbers 
@@ -11,9 +23,16 @@ env:
   zosHostname: 9.76.61.15
   zosSFTPUser: WFEZZAN@10.3.20.34
 jobs:
-  Explore-GitHub-Actions:
+  Setup:
     runs-on: self-hosted
     steps:
       - name: Clone Repo to z/OS Unix System Services
         run: |
            ssh ${{ env.zosSFTPUser}} ". ./.profile && gitClone.sh -w ${{ env.uniqueWorkspaceId }} -r  https://${{ secrets.eole59_token }}github.com/${{ github.repository }}.git -b${{ env.branch }}" 
+  Build:
+    runs-on: self-hosted
+    steps:
+      - name: Build Application
+        run: |
+            run: ssh ${{ env.zosSFTPUser}} ". ./.profile && dbbBuild.sh -w ${{ env.uniqueWorkspaceId }} -a ${{env.application}} -b ${{ env.branch }} -p ${{env.pipelineType}} "
+          
