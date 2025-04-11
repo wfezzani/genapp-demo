@@ -1,9 +1,10 @@
-name: Build
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
     workflow_call:
         secrets:
             githubAccessToken:
-                required: true
+                required: false
         inputs:
             pipelineType:
                 description: Pipeline Type
@@ -11,31 +12,27 @@ on:
                 type: string
                 required: false
 
-env:
-    uniqueWorkspaceId: /u/DMJTA1/workspace/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }} # adding a b to before the number,
-    # to avoid an error caused by repeated build numbers 
-    branch : ${{ github.ref_name }} 
-    application: ${{ github.event.repository.name }}
-    pipelineType: ${{ inputs.pipelineType }}
-    packageName: ${{github.run_id}}
-    zosHostname: 9.76.61.15
-    zosSFTPUser: DMJTA1@9.76.61.15
 
+env:
+  uniqueWorkspaceId: /u/wfezzan/builds-github/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }} # adding a b to before the number,
+    # to avoid an error caused by repeated build numbers 
+  branch : ${{ github.ref_name }} 
+  application: ${{ github.event.repository.name }}
+  pipelineType: ${{ inputs.pipelineType }}
+  packageName: ${{github.run_id}}
+  zosHostname: 9.76.61.15
+  zosSFTPUser: WFEZZAN@10.3.20.34
 jobs:
-    Setup:
-        runs-on: self-hosted
-        steps:
-         - name: CI-CD pipeline parameter printout
-           run: |
-            echo " "
-            echo "Following are the CI-CD pipeline parameters"
-            echo "*******************************************"
-            echo "uniqueWorkspaceId                  = ${{ env.uniqueWorkspaceId}}"
-            echo "branch                             = ${{ env.branch}}"
-            echo "application                        = ${{ env.application}}"
-            echo "pipelineType                       = ${{ env.pipelineType}}"
-            echo "packageName                        = ${{ env.packageName}}"
-            echo "zosHostname                        = ${{ env.zosHostname}}"
-            echo "zosSFTPUser                        = ${{ env.zosSFTPUser}}"
-         - name: Clone Repo to z/OS Unix System Services
-           run: cd /u/wfezzan 
+  Setup:
+    runs-on: self-hosted
+    steps:
+      - name: Clone Repo to z/OS Unix System Services
+        run: |
+           ssh ${{ env.zosSFTPUser}} ". ./.profile && gitClone.sh -w ${{ env.uniqueWorkspaceId }} -r  https://${{ secrets.eole59_token }}github.com/${{ github.repository }}.git -b${{ env.branch }}" 
+          
+  Build:
+    runs-on: self-hosted
+    steps:
+      - name: Build Application
+        run: |
+            run: ssh ${{ env.zosSFTPUser}} ". ./.profile && dbbBuild.sh -w ${{ env.uniqueWorkspaceId }} -a ${{env.application}} -b ${{ env.branch }} -p build"
