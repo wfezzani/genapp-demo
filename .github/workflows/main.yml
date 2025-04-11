@@ -4,7 +4,7 @@ on:
     workflow_call:
         secrets:
             githubAccessToken:
-                required: true
+                required: false
         inputs:
             pipelineType:
                 description: Pipeline Type
