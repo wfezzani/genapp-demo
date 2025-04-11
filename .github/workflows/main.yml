@@ -55,7 +55,7 @@ jobs:
             run: |
                 ssh ${{env.zosSFTPUser}} ". ./.profile && cd ${WD_ARTIFACTS}"
                 ssh ${{env.zosSFTPUser}} ". ./.profile && python  $WD_SAMPLES/dbb_prepare_local_folder.py --dbbBuildResult ${{ env.uniqueWorkspaceId }}/logs/BuildReport.json --workingFolder ${{ env.uniqueWorkspaceId }}/package"     
-                ssh ${{env.zosSFTPUser}} ". ./.profile && /u/wfezzan/dbb-v3/bin/groovyz $PACKAGE_BUILD_OUTPUTS_FOLDER/PackageBuildOutputs.groovy --workDir ${{ env.uniqueWorkspaceId }} -p -ad ${{env.application}} -v ${ARTIFACTORY_STATIC_BUILD_NAME}/${{github.run_number }}/${{env.application}}.tar  -aprop /u/wfezzan/builds/appArtifactRepository.properties" 
+                ssh ${{env.zosSFTPUser}} ". ./.profile && /u/wfezzan/dbb-v3/bin/groovyz $PACKAGE_BUILD_OUTPUTS_FOLDER/PackageBuildOutputs.groovy --workDir ${{ env.uniqueWorkspaceId }} -p -ad ${{env.application}}/logs -v ${ARTIFACTORY_STATIC_BUILD_NAME}/${{github.run_number }}/${{env.application}}.tar  -aprop /u/wfezzan/builds/appArtifactRepository.properties" 
   
                 
                 
