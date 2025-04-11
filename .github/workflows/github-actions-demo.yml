@@ -2,7 +2,7 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 env:
-  uniqueWorkspaceId: /u/DMJTA1/workspace/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }} # adding a b to before the number,
+  uniqueWorkspaceId: /u/WFEZZAN/builds-github/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }} # adding a b to before the number,
     # to avoid an error caused by repeated build numbers 
   branch : ${{ github.ref_name }} 
   application: ${{ github.event.repository.name }}
@@ -27,4 +27,4 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Clone Repo to z/OS Unix System Services
         run: |
-           ssh ${{ env.zosSFTPUser}} ". ./.profile && gitClone.sh -w . -r  https://${{ secrets.eole59_token }}github.com/wfezzani/genapp-demo.git -b main" 
+           ssh ${{ env.zosSFTPUser}} ". ./.profile && gitClone.sh -w . -r  https://${{ secrets.eole59_token }}github.com/${{ github.repository }}.git -b${{ env.branch }}" 
