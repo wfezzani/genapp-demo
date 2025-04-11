@@ -1,16 +1,6 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on:
-    workflow_call:
-        secrets:
-            githubAccessToken:
-                required: false
-        inputs:
-            pipelineType:
-                description: Pipeline Type
-                default: build
-                type: string
-                required: false
+run-name: ${{ github.actor }} is testing out GitHub Actions
+on: [push]
 
 
 env:
