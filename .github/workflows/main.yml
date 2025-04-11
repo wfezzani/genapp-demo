@@ -25,5 +25,5 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Build Application
-        run: |
+        run: | 
             ssh ${{ env.zosSFTPUser}} ". ./.profile && dbbBuild.sh -w ${{ env.uniqueWorkspaceId }} -a ${{env.application}} -b ${{ env.branch }} -p build"
