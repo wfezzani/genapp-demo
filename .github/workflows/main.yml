@@ -11,6 +11,9 @@ env:
   packageName: ${{github.run_id}}
   zosHostname: 9.76.61.15
   zosSFTPUser: WFEZZAN@10.3.20.34
+  WD_ARTIFACTS: /u/wfezzan/wazi-deploy-artifacts
+  WD_SAMPLES: /var/wazi-deploy-samples/cics-genapp/wazideploy-samples/python/dbb
+
 jobs:
   Setup:
     runs-on: self-hosted
@@ -39,3 +42,15 @@ jobs:
                 name: build_logs_${{github.run_number }}                        # Name used for artifact when it is uploaded
                 path: ${{ runner.temp }}/build-logs                             # Path to build logs artifacts
                 retention-days: 1
+   
+  Package:
+        needs: Build
+        runs-on: self-hosted
+        steps:
+          - name: Package build outputs
+            run: |
+                ssh ${{env.zosSFTPUser}} ". ./.profile && cd ${WD_ARTIFACTS}
+             #  python  $WD_SAMPLES/dbb_prepare_local_folder.py --dbbBuildResult /u/wfezzan/builds/work/BUILD-${CI_PIPELINE_ID}/BuildReport.json --workingFolder /u/wfezzan/builds/work/BUILD-${CI_PIPELINE_ID}/package     
+
+                
+                
