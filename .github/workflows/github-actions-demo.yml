@@ -27,4 +27,4 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Clone Repo to z/OS Unix System Services
         run: |
-           ssh ${{ env.zosSFTPUser}} ". ./.profile && gitClone.sh -w . -r  https://github.com/wfezzani/genapp-demo.git -b main" 
+           ssh ${{ env.zosSFTPUser}} ". ./.profile && gitClone.sh -w . -r  https://${{ secrets.eole59_token }}github.com/wfezzani/genapp-demo.git -b main" 
