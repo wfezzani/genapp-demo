@@ -33,3 +33,10 @@ jobs:
                 mkdir "${{ runner.temp }}/build-logs" 
                 sftp ${{ env.zosSFTPUser}}:${{ env.uniqueWorkspaceId }}/*.tar "\"${{ runner.temp }}/build-logs\""
                 tar -xvf "${{ runner.temp }}/build-logs/logs.tar" -C "${{ runner.temp }}/build-logs"
+                
+      - name: Upload build logs
+            uses: actions/upload-artifact@v4
+            with:
+                name: build_logs_${{github.run_number }}                        # Name used for artifact when it is uploaded
+                path: ${{ runner.temp }}/build-logs                             # Path to build logs artifacts
+                retention-days: 1
