@@ -21,6 +21,7 @@ jobs:
            ssh ${{ env.zosSFTPUser}} ". ./.profile && gitClone.sh -w ${{ env.uniqueWorkspaceId }} -r  https://${{ secrets.eole59_token }}github.com/${{ github.repository }}.git -b${{ env.branch }}" 
           
   Build:
+    needs: Setup
     runs-on: self-hosted
     steps:
       - name: Build Application
