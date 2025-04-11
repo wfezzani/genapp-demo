@@ -50,7 +50,7 @@ jobs:
           - name: Package build outputs
             run: |
                 ssh ${{env.zosSFTPUser}} ". ./.profile && cd ${WD_ARTIFACTS}"
-                ssh ${{env.zosSFTPUser}} ". ./.profile && python  $WD_SAMPLES/dbb_prepare_local_folder.py --dbbBuildResult ${{ env.uniqueWorkspaceId }}/logs/BuildReport.json --workingFolder ${{ env.uniqueWorkspaceId }}/package     
+                ssh ${{env.zosSFTPUser}} ". ./.profile && python  $WD_SAMPLES/dbb_prepare_local_folder.py --dbbBuildResult ${{ env.uniqueWorkspaceId }}/logs/BuildReport.json --workingFolder ${{ env.uniqueWorkspaceId }}/package"     
 
                 
                 
