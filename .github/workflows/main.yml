@@ -57,7 +57,7 @@ jobs:
                 ssh ${{env.zosSFTPUser}} ". ./.profile && python  $WD_SAMPLES/dbb_prepare_local_folder.py --dbbBuildResult ${{ env.uniqueWorkspaceId }}/logs/BuildReport.json --workingFolder ${{ env.uniqueWorkspaceId }}/package"     
                 ssh ${{env.zosSFTPUser}} ". ./.profile && /u/wfezzan/dbb-v3/bin/groovyz $PACKAGE_BUILD_OUTPUTS_FOLDER/PackageBuildOutputs.groovy --workDir ${{ env.uniqueWorkspaceId }}/logs -p -ad ${{env.application}} -v branch-${{ env.branch }}/pipeline-${{github.run_number }}/${{env.application}}.tar  -aprop /u/wfezzan/builds/appArtifactRepository.properties" 
           - name: Create Package locally
-            run:    ssh ${{env.zosSFTPUser}} ". ./.profile && /u/wfezzan/dbb-v3/bin/bin/groovyz $PACKAGE_BUILD_OUTPUTS_FOLDER/PackageBuildOutputs.groovy --workDir ${{ env.uniqueWorkspaceId }}/logs --tarFileName ${{env.application}}-${{github.run_number }}.tar --application ${{env.application}} --addExtension --branch main --generateWaziDeployAppManifest --includeLogs "*.log" --versionName v1 --verbose"
+            run: ssh ${{env.zosSFTPUser}} ". ./.profile && /u/wfezzan/dbb-v3/bin/groovyz $PACKAGE_BUILD_OUTPUTS_FOLDER/PackageBuildOutputs.groovy --workDir ${{ env.uniqueWorkspaceId }}/logs --tarFileName ${{env.application}}-${{github.run_number }}.tar --application ${{env.application}} --addExtension --branch main --generateWaziDeployAppManifest --includeLogs "*.log" --versionName v1 --verbose"
 
    
   Deploy-integration:
