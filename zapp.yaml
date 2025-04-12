@@ -41,14 +41,14 @@ profiles:
   - name: dbb-userbuild
     type: dbb
     settings:
-      application: GENAPP-B12
+      application: genapp-demo
       command: "$DBB_HOME/bin/groovyz"
       buildScriptPath: "/var/dbb-zappbuild-v3/dbb-zappbuild/build.groovy"
       buildScriptArgs:
         - "--userBuild"
         - "--workspace ${zopeneditor.userbuild.userSettings.dbbWorkspace}"
         - "--application ${application}"
-        - "--hlq ${zopeneditor.userbuild.userSettings.dbbHlq}"
+        - "--hlq WFEZZAN.VSCODE.GENAPP.DEMO"
         - "--outDir ${zopeneditor.userbuild.userSettings.dbbLogDir}"
         - "--verbose"
         - "--debug"
