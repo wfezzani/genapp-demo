@@ -59,10 +59,10 @@ jobs:
       - name: Build Application
         run: | 
             ssh ${{ env.zosSFTPUser}} ". ./.profile && mv /tmp/CC/* ${{ env.uniqueWorkspaceId }}/"
-            ssh -o SendEnv=env.uniqueWorkspaceId ${{ env.zosSFTPUser}} ". ./.profile && /u/wfezzan/codecoverage.sh"
+            echo "#!/bin/bash\n ${{ env.uniqueWorkspaceId }}" | cat /u/wfezzan/script1.sh
   
   CodeReview:
-     needs: Build_Test
+     needs: CodeCoverage
      runs-on: self-hosted
      steps:
       - name: Build Application
