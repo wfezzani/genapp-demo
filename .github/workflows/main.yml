@@ -15,7 +15,7 @@ env:
   WD_SAMPLES: /var/wazi-deploy-samples/cics-genapp/wazideploy-samples/python/dbb
   PACKAGE_BUILD_OUTPUTS_FOLDER: /var/dbb-pipelineBackend/dbb/Pipeline/PackageBuildOutputs
   ARTIFACTORY_STATIC_BUILD_NAME: cics-genapp-wd-static-build
-
+  wdEnvironmentFileTest: /u/wfezzan/wazi-deploy-artifacts/zos-environment.yml
 
 
 jobs:
@@ -64,9 +64,10 @@ jobs:
         needs: Package
         runs-on: self-hosted
         steps:
-          - name: Generate deployment plan 
-            run: ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-generate.sh -w ${{ env.uniqueWorkspaceId }}} -m /u/wfezzan/wazi-deploy-artifacts/deploy-method-cics.yaml -p /u/wfezzan/wazi-deploy-artifacts/github/deploymentPlan-${{github.run_number }} -r /u/wfezzan/wazi-deploy-artifacts/github/deploymentPlanReport-${{github.run_number }} -i ${{ env.uniqueWorkspaceId }}/logs/${{env.application}}-${{github.run_number }}.tar"
-             
+          - name: Generate Deployment Plan 
+            run: ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-generate.sh -w ${{ env.uniqueWorkspaceId }} -m /u/wfezzan/wazi-deploy-artifacts/deploy-method-cics.yaml -p /u/wfezzan/wazi-deploy-artifacts/github/deploymentPlan-${{github.run_number }} -r /u/wfezzan/wazi-deploy-artifacts/github/deploymentPlanReport-${{github.run_number }} -i ${{ env.uniqueWorkspaceId }}/logs/${{env.application}}-${{github.run_number }}.tar"
+          - name: Deploy to Integration Environment 
+            run: ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-deploy.sh -w ${{ env.uniqueWorkspaceId }} -p /u/wfezzan/wazi-deploy-artifacts/github/deploymentPlan-${{github.run_number }}  -e ${wdEnvironmentFileTest} -i ${{ env.uniqueWorkspaceId }}/logs/${{env.application}}-${{github.run_number }}.tar -l /u/wfezzan/wazi-deploy-artifacts/github/evidences/evidences_${{github.run_number }}.yml < /dev/null"   
    
    
              
