@@ -59,7 +59,7 @@ jobs:
       - name: Build Application
         run: | 
             ssh ${{ env.zosSFTPUser}} ". ./.profile && mv /tmp/CC/* ${{ env.uniqueWorkspaceId }}/"
-            echo "#!/bin/bash\n ${{ env.uniqueWorkspaceId }}" | cat /u/wfezzan/script1.sh
+            echo "#!/bin/bash\n ${{ env.uniqueWorkspaceId }}" | cat > /u/wfezzan/script1.sh
   
   CodeReview:
      needs: CodeCoverage
