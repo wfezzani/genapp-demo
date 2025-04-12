@@ -59,8 +59,8 @@ jobs:
       - name: Build Application
         run: | 
             echo "code coverage"
-        #    ssh ${{ env.zosSFTPUser}} ". ./.profile && mv /tmp/CC/* ${{ env.uniqueWorkspaceId }}/"
-        #    if [ `ls -a ${{ env.uniqueWorkspaceId }}/*.cczip | wc -l` -gt 0 ]; then $DBB_HOME/bin/groovyz -cp $CC_CLASS/lib/ccapi.jar $CC_DBBANALYZE/AnalyzeCodeCoverageReport.groovy -f `ls -m ${{ env.uniqueWorkspaceId }}/*.cczip | sed "s/ //g"`; fi
+            ssh ${{ env.zosSFTPUser}} ". ./.profile && mv /tmp/CC/* ${{ env.uniqueWorkspaceId }}/"
+            if [ `ls -a ${{ env.uniqueWorkspaceId }}/*.cczip | wc -l` -gt 0 ]; then $DBB_HOME/bin/groovyz -cp $CC_CLASS/lib/ccapi.jar $CC_DBBANALYZE/AnalyzeCodeCoverageReport.groovy -f `ls -m ${{ env.uniqueWorkspaceId }}/*.cczip | sed "s/ //g"`; fi
    
   
   
