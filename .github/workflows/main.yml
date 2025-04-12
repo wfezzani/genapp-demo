@@ -18,6 +18,8 @@ env:
   wdEnvironmentFileTest: /u/wfezzan/wazi-deploy-artifacts/zos-environment.yml
   DBB_HOME: /u/wfezzan/dbb-v3
   REPORT_FOLDER: /u/wfezzan/builds-github/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }}
+  CC_CLASS: /usr/lpp/debug/v16/plugins/com.ibm.debug.pdt.codecoverage.core.results_13.0.6
+  CC_DBBANALYZE: /var/dbb/Pipeline/AnalyzeCodeCoverageReport
 
 
 jobs:
@@ -28,7 +30,7 @@ jobs:
         run: |
            ssh ${{ env.zosSFTPUser}} ". ./.profile && gitClone.sh -w ${{ env.uniqueWorkspaceId }} -r  https://${{ secrets.eole59_token }}github.com/${{ github.repository }}.git -b${{ env.branch }}" 
           
-  Build:
+  Build_Test:
     needs: Setup
     runs-on: self-hosted
     steps:
@@ -50,9 +52,19 @@ jobs:
                 retention-days: 1
   
   
+  CodeCoverage:
+     needs: Build_Test
+     runs-on: self-hosted
+     steps:
+      - name: Build Application
+        run: | 
+            ssh ${{ env.zosSFTPUser}} ". ./.profile && mv /tmp/CC/* ${{ env.uniqueWorkspaceId }}/"
+            if [ `ls -a ${{ env.uniqueWorkspaceId }}/*.cczip | wc -l` -gt 0 ]; then $DBB_HOME/bin/groovyz -cp $CC_CLASS/lib/ccapi.jar $CC_DBBANALYZE/AnalyzeCodeCoverageReport.groovy -f `ls -m ${{ env.uniqueWorkspaceId }}/*.cczip | sed "s/ //g"`; fi
+   
+  
   
   CodeReview:
-     needs: Build
+     needs: Build_Test
      runs-on: self-hosted
      steps:
       - name: Build Application
