@@ -73,6 +73,15 @@ jobs:
                ssh ${{ env.zosSFTPUser}} ". ./.profile && cd /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts"
                 ssh ${{ env.zosSFTPUser}} ". ./.profile && pwd"
                ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -if /u/wfezzan/wazi-deploy-artifacts/github/evidences/index -df /u/wfezzan/wazi-deploy-artifacts/github/evidences i"
-               ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -df /u/wfezzan/wazi-deploy-artifacts/github/evidences -t /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.yml -o /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/deployment-report_${{github.run_number }}.html r renderer=/u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.html environment_name=zos_env_test"
-             
+               ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -df /u/wfezzan/wazi-deploy-artifacts/github/evidences -t /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.yml -o /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/deployment-reports/deployment-report_${{github.run_number }}.html r renderer=/u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.html environment_name=zos_env_test"
+               ssh ${{ env.zosSFTPUser}} ". ./.profile && cp /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/deployment-reports/deployment-report_${{github.run_number }}.html ${{ env.uniqueWorkspaceId }}/
+               rm -rf "${{ runner.temp }}/deploy-logs"
+                mkdir "${{ runner.temp }}/deploy-logs"
+                sftp -r ${{ env.zosSFTPUser}}:${{ env.uniqueWorkspaceId }}/deployment-report_${{github.run_number }}.html "\"${{ runner.temp }}/deploy-logs\""
+          - name: Upload deploy logs
+            uses: actions/upload-artifact@v4
+            with:
+              name: deploy_logs_${{github.run_number }}                        # Name used for artifact when it is uploaded
+              path: ${{ runner.temp }}/deploy-logs                        # Path to build logs artifacts
+              retention-days: 1
                 
