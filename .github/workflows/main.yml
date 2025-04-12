@@ -60,8 +60,7 @@ jobs:
         run: | 
             echo "code coverage"
             ssh ${{ env.zosSFTPUser}} ". ./.profile && mv /tmp/CC/* ${{ env.uniqueWorkspaceId }}/"
-            ssh ${{ env.zosSFTPUser}} ". ./.profile && if [ `ls -a /u/wfezzan/builds-github/wfezzani/genapp-demo/main/build_b75/LGICDB01_2025_04_12_055725_0984.cczip | wc -l` -gt 0 ]; then $DBB_HOME/bin/groovyz -cp $CC_CLASS/lib/ccapi.jar $CC_DBBANALYZE/AnalyzeCodeCoverageReport.groovy -f `ls -m /u/wfezzan/builds-github/wfezzani/genapp-demo/main/build_b75/LGICDB01_2025_04_12_055725_0984.cczip | sed "s/ //g"`; fi"
-   
+            ssh ${{ env.zosSFTPUser}} ". ./.profile && /u/wfezzan/codecoverage.sh"
   
   
   CodeReview:
