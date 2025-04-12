@@ -18,7 +18,7 @@
       * Select customer details from DB2 table                         *
       *                                                                *
       *                                                                *
-      *modif19                                                  *
+      *modif20                                                *
 
       ******************************************************************
        IDENTIFICATION DIVISION.

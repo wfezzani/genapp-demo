@@ -16,6 +16,8 @@ env:
   PACKAGE_BUILD_OUTPUTS_FOLDER: /var/dbb-pipelineBackend/dbb/Pipeline/PackageBuildOutputs
   ARTIFACTORY_STATIC_BUILD_NAME: cics-genapp-wd-static-build
   wdEnvironmentFileTest: /u/wfezzan/wazi-deploy-artifacts/zos-environment.yml
+  DBB_HOME: /u/wfezzan/dbb-v3
+  REPORT_FOLDER: /u/wfezzan/builds-github/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }}
 
 
 jobs:
@@ -46,9 +48,22 @@ jobs:
                 name: build_logs_${{github.run_number }}                        # Name used for artifact when it is uploaded
                 path: ${{ runner.temp }}/build-logs                             # Path to build logs artifacts
                 retention-days: 1
-   
+  
+  
+  
+  CodeReview:
+     needs: Build
+     runs-on: self-hosted
+     steps:
+      - name: Build Application
+        run: | 
+            ssh ${{ env.zosSFTPUser}} ". ./.profile && $DBB_HOME/bin/groovyz \
+            /var/dbb/Pipeline/RunIDZCodeReview/RunCodeReview.groovy\
+            --workDir ${{ env.uniqueWorkspaceId }}\
+            -cr  /var/dbb-pipeline/cics-genapp/cr-rules/CodeReviewRules.dat\
+            -ccr /var/dbb-pipeline/cics-genapp/cr-rules/CodeReviewRules.ccr 
   Package:
-        needs: Build
+        needs: CodeReview
         runs-on: self-hosted
         steps:
           - name: Create Package and publish to Nexus
