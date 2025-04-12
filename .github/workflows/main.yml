@@ -59,7 +59,7 @@ jobs:
       - name: Build Application
         run: | 
             ssh ${{ env.zosSFTPUser}} ". ./.profile && mv /tmp/CC/* ${{ env.uniqueWorkspaceId }}/"
-            ssh -o SendEnv=env.uniqueWorkspaceId ${{ env.zosSFTPUser}} ". ./.profile && /u/wfezzan/codecoverage.sh""
+            ssh -o SendEnv=env.uniqueWorkspaceId ${{ env.zosSFTPUser}} ". ./.profile && /u/wfezzan/codecoverage.sh"
   
   CodeReview:
      needs: Build_Test
