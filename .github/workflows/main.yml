@@ -59,6 +59,7 @@ jobs:
       - name: Build Application
         run: | 
             echo "code coverage"
+            export uniqueWorkspaceId=/u/wfezzan/builds-github/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }} 
             ssh ${{ env.zosSFTPUser}} ". ./.profile && mv /tmp/CC/* ${{ env.uniqueWorkspaceId }}/"
             ssh ${{ env.zosSFTPUser}} ". ./.profile && /u/wfezzan/codecoverage.sh"
   
