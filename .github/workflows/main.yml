@@ -65,7 +65,7 @@ jobs:
         runs-on: self-hosted
         steps:
           - name: Generate deployment plan 
-            run: ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-generate.sh -w ${{ env.uniqueWorkspaceId }}} -m /u/wfezzan/wazi-deploy-artifacts/deploy-method-cics.yaml -p /u/wfezzan/wazi-deploy-artifacts/deploymentPlan-${CI_PIPELINE_ID} -r /u/wfezzan/wazi-deploy-artifacts/deploymentPlanReport-${CI_PIPELINE_ID} -i /u/wfezzan/builds/work/BUILD-${CI_PIPELINE_ID}/genapp-cb12-${CI_PIPELINE_ID}.tar"  --cwd .
+            run: ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-generate.sh -w ${{ env.uniqueWorkspaceId }}} -m /u/wfezzan/wazi-deploy-artifacts/deploy-method-cics.yaml -p /u/wfezzan/wazi-deploy-artifacts/github/deploymentPlan-${{github.run_number }} -r /u/wfezzan/wazi-deploy-artifacts/github/deploymentPlanReport-${{github.run_number }} -i ${{ env.uniqueWorkspaceId }}/logs/${{env.application}}-${{github.run_number }}.tar"
              
    
    
