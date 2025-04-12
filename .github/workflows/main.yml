@@ -70,7 +70,7 @@ jobs:
             run: ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-deploy.sh -w ${{ env.uniqueWorkspaceId }} -p /u/wfezzan/wazi-deploy-artifacts/github/deploymentPlan-${{github.run_number }}  -e ${wdEnvironmentFileTest} -i ${{ env.uniqueWorkspaceId }}/logs/${{env.application}}-${{github.run_number }}.tar -l /u/wfezzan/wazi-deploy-artifacts/github/evidences/evidences_${{github.run_number }}.yml < /dev/null"   
           - name: Analyze Deployment Report and publish
             run: |
-               ssh ${{ env.zosSFTPUser}} ". ./.profile && cd /u/WFEZZAN/wazi-deploy-artifacts/github/evidences-artifacts"
+               ssh ${{ env.zosSFTPUser}} ". ./.profile && cd /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts"
                ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -if index -df ../evidences i"
                ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -if index -t full-report.yml -o deployment-report_${{github.run_number }}.html r renderer=full-report.html environment_name=zos_env_test"
              
