@@ -168,7 +168,7 @@
            PERFORM GET-CUSTOMER-INFO.
       *  Bug to add
            IF DB2-CUSTOMERNUMBER-INT = 1
-           MOVE "Andy" TO CA-FIRST-NAME
+           MOVE "Andrew" TO CA-FIRST-NAME
            END-IF.
 
       *----------------------------------------------------------------*
