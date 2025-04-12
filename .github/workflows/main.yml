@@ -57,7 +57,8 @@ jobs:
      steps:
       - name: Build Application
         run: | 
-            ssh ${{ env.zosSFTPUser}} ". ./.profile && $DBB_HOME/bin/groovyz /var/dbb/Pipeline/RunIDZCodeReview/RunCodeReview.groovy --workDir ${{ env.uniqueWorkspaceId }} cr  /var/dbb-pipeline/cics-genapp/cr-rules/CodeReviewRules.dat -ccr /var/dbb-pipeline/cics-genapp/cr-rules/CodeReviewRules.ccr"
+            ssh ${{ env.zosSFTPUser}} ". ./.profile && $DBB_HOME/bin/groovyz /var/dbb/Pipeline/RunIDZCodeReview/RunCodeReview.groovy --workDir ${{ env.uniqueWorkspaceId }} --cr  /var/dbb-pipeline/cics-genapp/cr-rules/CodeReviewRules.dat -ccr /var/dbb-pipeline/cics-genapp/cr-rules/CodeReviewRules.ccr"
+  
   Package:
         needs: CodeReview
         runs-on: self-hosted
