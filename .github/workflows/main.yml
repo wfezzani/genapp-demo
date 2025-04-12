@@ -61,7 +61,7 @@ jobs:
             echo "code coverage"
             export uniqueWorkspaceId=/u/wfezzan/builds-github/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }} 
             ssh ${{ env.zosSFTPUser}} ". ./.profile && mv /tmp/CC/* ${{ env.uniqueWorkspaceId }}/"
-            ssh ${{ env.zosSFTPUser}} 'export uniqueWorkspaceId=/u/wfezzan/builds-github/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }}'; ". ./.profile && echo ${{ env.zosSFTPUser}}"
+            ssh ${{ env.zosSFTPUser}} 'export uniqueWorkspaceId=/u/wfezzan/builds-github/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }}' ". ./.profile && echo ${{ env.zosSFTPUser}}"
   
   CodeReview:
      needs: Build_Test
