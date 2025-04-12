@@ -71,7 +71,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
               name: codereview_logs_${{github.run_number }}                        # Name used for artifact when it is uploaded
-              path: ${{ runner.temp }}/CodeReview-logs                        # Path to build logs artifacts
+              path: ${{ runner.temp }}/CodeCoverage-logs                        # Path to build logs artifacts
               retention-days: 1
      
   CodeReview:
