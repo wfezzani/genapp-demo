@@ -62,17 +62,6 @@ jobs:
             ssh ${{ env.zosSFTPUser}} ". ./.profile && cp ${{ env.uniqueWorkspaceId }}/*.cczip /u/wfezzan/builds-github/CC/"
             ssh ${{ env.zosSFTPUser}} ". ./.profile && /u/wfezzan/codecoverage.sh"
      
-      - name: Prepare Code Coverage Reports
-        run: | 
-            rm -rf "${{ runner.temp }}/CodeCoverage-logs"
-            mkdir "${{ runner.temp }}/CodeCoverage-logs"    
-            sftp -r ${{ env.zosSFTPUser}}:${{ env.uniqueWorkspaceId }}/logs/CodeReview* "\"${{ runner.temp }}/CodeReview-logs\""
-      - name: Upload Code Review logs
-        uses: actions/upload-artifact@v4
-        with:
-              name: codereview_logs_${{github.run_number }}                        # Name used for artifact when it is uploaded
-              path: ${{ runner.temp }}/CodeCoverage-logs                        # Path to build logs artifacts
-              retention-days: 1
      
   CodeReview:
      needs: CodeCoverage
