@@ -60,6 +60,8 @@ jobs:
         run: | 
             ssh ${{ env.zosSFTPUser}} ". ./.profile && mv /tmp/CC/* ${{ env.uniqueWorkspaceId }}/"
             ssh ${{ env.zosSFTPUser}} ". ./.profile && cp ${{ env.uniqueWorkspaceId }}/*.cczip /u/wfezzan/builds-github/CC/"
+            ssh ${{ env.zosSFTPUser}} ". ./.profile && if [ `ls -a /u/wfezzan/builds-github/CC/*.cczip | wc -l` -gt 0 ]; then /u/wfezzan/dbb-v3/bin/groovyz -cp /usr/lpp/debug/v16/plugins/com.ibm.debug.pdt.codecoverage.core.results_13.0.6/lib/ccapi.jar /var/dbb/Pipeline/AnalyzeCodeCoverageReport/AnalyzeCodeCoverageReport.groovy -f `ls -m /u/wfezzan/builds-github/CC/*.cczip | sed "s/ //g"`; fi"
+
   
   CodeReview:
      needs: CodeCoverage
