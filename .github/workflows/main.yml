@@ -61,8 +61,7 @@ jobs:
             echo "code coverage"
             export uniqueWorkspaceId=/u/wfezzan/builds-github/${{ github.repository }}/${{ github.ref_name }}/build_b${{github.run_number }} 
             ssh ${{ env.zosSFTPUser}} ". ./.profile && mv /tmp/CC/* ${{ env.uniqueWorkspaceId }}/"
-            ssh ${{ env.zosSFTPUser}} ". ./.profile && /u/wfezzan/codecoverage.sh"
-            ssh ${{ env.zosSFTPUser}} ". ./.profile && echo "if [ `ls -a ${{ env.uniqueWorkspaceId }}/*.cczip | wc -l` -gt 0 ]; then $DBB_HOME/bin/groovyz -cp /usr/lpp/debug/v16/plugins/com.ibm.debug.pdt.codecoverage.core.results_13.0.6/lib/ccapi.jar /var/dbb/Pipeline/AnalyzeCodeCoverageReport/AnalyzeCodeCoverageReport.groovy -f `ls -m ${{ env.uniqueWorkspaceId }}/*.cczip | sed "s/ //g"`; fi" |  cat > /u/wfezzan/codecoverag""e
+            ssh ${{ env.zosSFTPUser}} ". ./.profile && echo "#!/bin/bash\n if [ `ls -a ${{ env.uniqueWorkspaceId }}/*.cczip | wc -l` -gt 0 ]; then $DBB_HOME/bin/groovyz -cp /usr/lpp/debug/v16/plugins/com.ibm.debug.pdt.codecoverage.core.results_13.0.6/lib/ccapi.jar /var/dbb/Pipeline/AnalyzeCodeCoverageReport/AnalyzeCodeCoverageReport.groovy -f `ls -m ${{ env.uniqueWorkspaceId }}/*.cczip | sed "s/ //g"`; fi" |  cat > /u/wfezzan/codecoverag""e
   
   
   CodeReview:
