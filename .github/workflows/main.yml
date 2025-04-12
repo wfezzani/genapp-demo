@@ -73,6 +73,6 @@ jobs:
                ssh ${{ env.zosSFTPUser}} ". ./.profile && cd /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts"
                 ssh ${{ env.zosSFTPUser}} ". ./.profile && pwd"
                ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -if /u/wfezzan/wazi-deploy-artifacts/github/evidences/index -df /u/wfezzan/wazi-deploy-artifacts/github/evidences i"
-               ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -if /u/wfezzan/wazi-deploy-artifacts/github/evidences/index -t u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.yml -o u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/deployment-report_${{github.run_number }}.html r renderer=u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.html environment_name=zos_env_test"
+               ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -df /u/wfezzan/wazi-deploy-artifacts/github/evidences -t u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.yml -o u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/deployment-report_${{github.run_number }}.html r renderer=u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.html environment_name=zos_env_test"
              
                 
