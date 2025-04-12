@@ -51,11 +51,23 @@ jobs:
         needs: Build
         runs-on: self-hosted
         steps:
-          - name: Package build outputs
+          - name: Create Package and publish to Nexus
             run: |
                 ssh ${{env.zosSFTPUser}} ". ./.profile && cd ${WD_ARTIFACTS}"
                 ssh ${{env.zosSFTPUser}} ". ./.profile && python  $WD_SAMPLES/dbb_prepare_local_folder.py --dbbBuildResult ${{ env.uniqueWorkspaceId }}/logs/BuildReport.json --workingFolder ${{ env.uniqueWorkspaceId }}/package"     
                 ssh ${{env.zosSFTPUser}} ". ./.profile && /u/wfezzan/dbb-v3/bin/groovyz $PACKAGE_BUILD_OUTPUTS_FOLDER/PackageBuildOutputs.groovy --workDir ${{ env.uniqueWorkspaceId }}/logs -p -ad ${{env.application}} -v branch-${{ env.branch }}/pipeline-${{github.run_number }}/${{env.application}}.tar  -aprop /u/wfezzan/builds/appArtifactRepository.properties" 
-  
-                
+          - name: Create Package locally
+            run:    ssh ${{env.zosSFTPUser}} ". ./.profile && /u/wfezzan/dbb-v3/bin/bin/groovyz $PACKAGE_BUILD_OUTPUTS_FOLDER/PackageBuildOutputs.groovy --workDir ${{ env.uniqueWorkspaceId }}/logs --tarFileName ${{env.application}}-${{github.run_number }}.tar --application ${{env.application}} --addExtension --branch main --generateWaziDeployAppManifest --includeLogs "*.log" --versionName v1 --verbose""
+
+   
+  Deploy-integration:
+        needs: Package
+        runs-on: self-hosted
+        steps:
+          - name: Generate deployment plan 
+            run: ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-generate.sh -w ${{ env.uniqueWorkspaceId }}} -m /u/wfezzan/wazi-deploy-artifacts/deploy-method-cics.yaml -p /u/wfezzan/wazi-deploy-artifacts/deploymentPlan-${CI_PIPELINE_ID} -r /u/wfezzan/wazi-deploy-artifacts/deploymentPlanReport-${CI_PIPELINE_ID} -i /u/wfezzan/builds/work/BUILD-${CI_PIPELINE_ID}/genapp-cb12-${CI_PIPELINE_ID}.tar"  --cwd .
+             
+   
+   
+             
                 
