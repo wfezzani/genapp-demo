@@ -167,9 +167,9 @@
       *    Call routine to issue SQL to obtain info from DB2
            PERFORM GET-CUSTOMER-INFO.
       *  Bug to add
-           IF DB2-CUSTOMERNUMBER-INT = 1
-           MOVE "AAAAAA" TO CA-FIRST-NAME
-           END-IF.
+      *     IF DB2-CUSTOMERNUMBER-INT = 1
+      *     MOVE "AAAAAA" TO CA-FIRST-NAME
+      *     END-IF.
 
       *----------------------------------------------------------------*
       * END PROGRAM and return to caller                               *
