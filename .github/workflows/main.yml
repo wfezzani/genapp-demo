@@ -104,12 +104,13 @@ jobs:
             run: ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-deploy.sh -w ${{ env.uniqueWorkspaceId }} -p /u/wfezzan/wazi-deploy-artifacts/github/deploymentPlan-${{github.run_number }}  -e ${wdEnvironmentFileTest} -i ${{ env.uniqueWorkspaceId }}/logs/${{env.application}}-${{github.run_number }}.tar -l /u/wfezzan/wazi-deploy-artifacts/github/evidences/evidences_${{github.run_number }}.yml < /dev/null"   
           - name: Analyze Deployment Report and publish
             run: |
-               ssh ${{ env.zosSFTPUser}} ". ./.profile && cd /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts"
+                ssh ${{ env.zosSFTPUser}} ". ./.profile && cd /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts"
                 ssh ${{ env.zosSFTPUser}} ". ./.profile && pwd"
-               ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -if /u/wfezzan/wazi-deploy-artifacts/github/evidences/index -df /u/wfezzan/wazi-deploy-artifacts/github/evidences i"
-               ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -df /u/wfezzan/wazi-deploy-artifacts/github/evidences -t /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.yml -o /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/deployment-reports/deployment-report_${{github.run_number }}.html r renderer=/u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.html environment_name=zos_env_test"
-               ssh ${{ env.zosSFTPUser}} ". ./.profile && cp /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/deployment-reports/deployment-report_${{github.run_number }}.html ${{ env.uniqueWorkspaceId }}/"
-               rm -rf "${{ runner.temp }}/deploy-logs"
+                ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -if /u/wfezzan/wazi-deploy-artifacts/github/evidences/index -df /u/wfezzan/wazi-deploy-artifacts/github/evidences i"
+                ssh ${{ env.zosSFTPUser}} ". ./.profile && wazideploy-evidence -if /u/wfezzan/wazi-deploy-artifacts/github/evidences/index -t /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.yml -o /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/deployment-reports/deployment-report_${{github.run_number }}.html r renderer=/u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/full-report.html environment_name=zos_env_test"
+              
+                ssh ${{ env.zosSFTPUser}} ". ./.profile && cp /u/wfezzan/wazi-deploy-artifacts/github/evidences-artifacts/deployment-reports/deployment-report_${{github.run_number }}.html ${{ env.uniqueWorkspaceId }}/"
+                rm -rf "${{ runner.temp }}/deploy-logs"
                 mkdir "${{ runner.temp }}/deploy-logs"
                 sftp -r ${{ env.zosSFTPUser}}:${{ env.uniqueWorkspaceId }}/deployment-report_${{github.run_number }}.html "\"${{ runner.temp }}/deploy-logs\""
           - name: Upload deploy logs
