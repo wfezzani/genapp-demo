@@ -1,4 +1,4 @@
-PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927                 Date 04/07/2025  Time 19:23:09   Page     1
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927                 Date 06/27/2025  Time 15:48:21   Page     1
 
 Invocation parameters:
  LIB,CICS,SQL,NODYNAM,TEST(NOSEPARATE)
@@ -57,7 +57,7 @@ Options in effect:
    OBJECT
  NOOFFSET
    OPTIMIZE(0)
-   OUTDD(SYSOUT)PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927                 Date 04/07/2025  Time 19:23:09   Page     2
+   OUTDD(SYSOUT)PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927                 Date 06/27/2025  Time 15:48:21   Page     2
 
  NOPARMCHECK
    PGMNAME(COMPAT)
@@ -116,7 +116,7 @@ SQL Options in effect:
 
 CICS Options in effect:
  CICS
- DEBUGPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927                 Date 04/07/2025  Time 19:23:09   Page     3
+ DEBUGPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927                 Date 06/27/2025  Time 15:48:21   Page     3
 
  EDF
  NATLANG(EN)
@@ -126,7 +126,7 @@ CICS Options in effect:
  NOCPSM
  LINKAGE
  LENGTH
- COBOL2PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page     4
+ COBOL2PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page     4
   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
 
 /* LGICDB01
@@ -150,7 +150,7 @@ CICS Options in effect:
   000018               * Select customer details from DB2 table                         *
   000019               *                                                                *
   000020               *                                                                *
-  000021               *modif2                                                          *
+  000021               *modif2                                        *
   000022
   000023               ******************************************************************
   000024                IDENTIFICATION DIVISION.
@@ -185,7 +185,7 @@ CICS Options in effect:
   000053                01  ERROR-MSG.
   000054                    03 EM-DATE                  PIC X(8)  VALUE SPACES.                   IMP
   000055                    03 FILLER                   PIC X     VALUE SPACES.                   IMP
-  000056                    03 EM-TIME                  PIC X(6)  VALUE SPACES.                   IMPPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page     5
+  000056                    03 EM-TIME                  PIC X(6)  VALUE SPACES.                   IMPPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page     5
   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
 
   000057                    03 FILLER                   PIC X(9)  VALUE ' LGICUS01'.
@@ -244,7 +244,7 @@ CICS Options in effect:
   000110C              *   if any of the DB2 table contents change the lengths will     *
   000111C              *   only need to be changed here.                                *
   000112C              *  modif910                                                       *
-  000113C              ******************************************************************PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page     6
+  000113C              ******************************************************************PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page     6
   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
 
   000114C               01  WS-POLICY-LENGTHS.
@@ -303,7 +303,7 @@ CICS Options in effect:
   000167C                   03 DB2-H-HOUSENUMBER        PIC X(4).
   000168C                   03 DB2-H-POSTCODE           PIC X(8).
   000169C
-  000170C               01  DB2-MOTOR.PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page     7
+  000170C               01  DB2-MOTOR.PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page     7
   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
 
   000171C                   03 DB2-M-MAKE               PIC X(15).
@@ -362,7 +362,7 @@ CICS Options in effect:
   000224C                              OCCURS 6 TIMES.
   000225C                   05 SQLWARN.
   000226C                     10 SQLWARN0 PIC X.
-  000227C                     10 SQLWARN1 PIC X.PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page     8
+  000227C                     10 SQLWARN1 PIC X.PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page     8
   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
 
   000228C                     10 SQLWARN2 PIC X.
@@ -421,7 +421,7 @@ CICS Options in effect:
   000281C                      05 CA-HOUSE-NAME         PIC X(20).
   000282C                      05 CA-HOUSE-NUM          PIC X(4).
   000283C                      05 CA-POSTCODE           PIC X(8).
-  000284C                      05 CA-NUM-POLICIES       PIC 9(3).PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page     9
+  000284C                      05 CA-NUM-POLICIES       PIC 9(3).PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page     9
   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
 
   000285C                      05 CA-PHONE-MOBILE       PIC X(20).
@@ -480,7 +480,7 @@ CICS Options in effect:
   000338C              *       Commercial policy description
   000339C                      05 CA-COMMERCIAL REDEFINES CA-POLICY-SPECIFIC.                     306
   000340C                         07 CA-B-Address         PIC X(255).
-  000341C                         07 CA-B-Postcode        PIC X(8).PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    10
+  000341C                         07 CA-B-Postcode        PIC X(8).PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    10
   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
 
   000342C                         07 CA-B-Latitude        PIC X(11).
@@ -539,7 +539,7 @@ CICS Options in effect:
   000395
   000396               * initialize commarea return code to zero
   000397                    MOVE '00' TO CA-RETURN-CODE                                           273
-  000398                    MOVE EIBCALEN TO WS-CALEN.                                            IMP 45PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    11
+  000398                    MOVE EIBCALEN TO WS-CALEN.                                            IMP 45PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    11
   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
 
   000399                    SET WS-ADDR-DFHCOMMAREA TO ADDRESS OF DFHCOMMAREA.                    44 IMP 246
@@ -571,7 +571,7 @@ CICS Options in effect:
   000425                    PERFORM GET-CUSTOMER-INFO.                                            442
   000426               *  Bug to add
   000427                    IF DB2-CUSTOMERNUMBER-INT = 1                                         86
-  000428      1             MOVE "bad name" TO CA-FIRST-NAME                                      278
+  000428      1             MOVE "AAAAA" TO CA-FIRST-NAME                                         278
   000429                    END-IF.
   000430
   000431               *----------------------------------------------------------------*
@@ -598,7 +598,7 @@ CICS Options in effect:
   000452                               PHONEHOME,
   000453                               EMAILADDRESS
   000454                        INTO  :CA-FIRST-NAME,                                             278
-  000455                              :CA-LAST-NAME,                                              279PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    12
+  000455                              :CA-LAST-NAME,                                              279PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    12
   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
 
   000456                              :CA-DOB,                                                    280
@@ -657,7 +657,7 @@ CICS Options in effect:
   000509      2                           COMMAREA(CA-ERROR-MSG)
   000510      2                           LENGTH(LENGTH OF CA-ERROR-MSG)
   000511      2                 END-EXEC                                                          EXT
-  000512      1               ELSEPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    13
+  000512      1               ELSEPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    13
   LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
 
   000513      2                 MOVE DFHCOMMAREA(1:90) TO CA-DATA                                 246 69
@@ -672,7 +672,7 @@ CICS Options in effect:
 ==000520==> IGYSC0208-I DSNH050I DSNHPSRV  WARNINGS HAVE BEEN SUPPRESSED DUE TO LACK OF TABLE
                         DECLARATIONS
 
-*/ LGICDB01PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    14
+*/ LGICDB01PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    14
 
 An "M" preceding a data-name reference indicates that the data-name is modified by this reference.
 
@@ -731,7 +731,7 @@ An "M" preceding a data-name reference indicates that the data-name is modified 
      320   CA-H-BEDROOMS
      325   CA-H-FILLER
      322   CA-H-HOUSE-NAME
-     323   CA-H-HOUSE-NUMBERPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    15
+     323   CA-H-HOUSE-NUMBERPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    15
 
  Defined   Cross-reference of data names   References
 
@@ -790,7 +790,7 @@ An "M" preceding a data-name reference indicates that the data-name is modified 
      204   DB2-C-CAUSE
      201   DB2-C-DATE
      200   DB2-C-NUM
-     205   DB2-C-OBSERVATIONSPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    16
+     205   DB2-C-OBSERVATIONSPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    16
 
  Defined   Cross-reference of data names   References
 
@@ -849,7 +849,7 @@ An "M" preceding a data-name reference indicates that the data-name is modified 
      246   DFHCOMMAREA. . . . . . . . . .  370 399 507 513
        0   EIBCALEN . . . . . . . . . . .  390 398 411 505 506 507
        0   EIBTASKN . . . . . . . . . . .  383
-       0   EIBTRMID . . . . . . . . . . .  382PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    17
+       0   EIBTRMID . . . . . . . . . . .  382PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    17
 
  Defined   Cross-reference of data names   References
 
@@ -908,7 +908,7 @@ An "M" preceding a data-name reference indicates that the data-name is modified 
      118   WS-HOUSE-LEN
      119   WS-MOTOR-LEN
      116   WS-POLICY-LEN
-     114   WS-POLICY-LENGTHSPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    18
+     114   WS-POLICY-LENGTHSPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    18
 
  Defined   Cross-reference of data names   References
 
@@ -918,7 +918,7 @@ An "M" preceding a data-name reference indicates that the data-name is modified 
       42   WS-TASKNUM . . . . . . . . . .  M383
       41   WS-TERMID. . . . . . . . . . .  M382
       49   WS-TIME. . . . . . . . . . . .  498
-      40   WS-TRANSID . . . . . . . . . .  M381PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    19
+      40   WS-TRANSID . . . . . . . . . .  M381PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    19
 
 Context usage is indicated by the letter preceding a procedure-name reference.
 These letters and their meanings are:
@@ -936,13 +936,13 @@ These letters and their meanings are:
      373   MAINLINE
      434   MAINLINE-END
      438   MAINLINE-EXIT
-     487   WRITE-ERROR-MESSAGE. . . . . .  P392 P476PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    20
+     487   WRITE-ERROR-MESSAGE. . . . . .  P392 P476PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    20
 
  Defined   Cross-reference of programs     References
 
 EXTERNAL   DFHEI1 . . . . . . . . . . . .  393 413 436 477 492 496 503 511 517
 EXTERNAL   DSNHLI . . . . . . . . . . . .  465
-      25   LGICDB01PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    21
+      25   LGICDB01PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    21
 
 
          COPY/BASIS cross-reference of text-names, library names and dataset information
@@ -950,9 +950,9 @@ EXTERNAL   DSNHLI . . . . . . . . . . . .  465
  Text-name Library   File name                                    Concat   ISPF statistics
  (Member)  (DDNAME)  (Dataset name)                               Level    Created         Changed
 
- LGCMAREA  SYSLIB    WFEZZAN.VSCODE.GENAPP.COPY                     0
- LGPOLICY  SYSLIB    WFEZZAN.VSCODE.GENAPP.COPY                     0
-PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 04/07/2025  Time 19:23:09   Page    22
+ LGCMAREA  SYSLIB    WFEZZAN.VSCODE.GENAPP.DEMO.COPY                0
+ LGPOLICY  SYSLIB    WFEZZAN.VSCODE.GENAPP.DEMO.COPY                0
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P210927       LGICDB01  Date 06/27/2025  Time 15:48:21   Page    22
 
 LineID  Message code  Message text
 
@@ -977,7 +977,7 @@ Printed:       6           4              2
 End of compilation 1,  program LGICDB01,  highest severity 4.
 
 Return code 4
-1z/OS V2 R5 BINDER     19:23:10 MONDAY APRIL  7, 2025
+1z/OS V2 R5 BINDER     15:48:23 FRIDAY JUNE 27, 2025
  BATCH EMULATOR  JOB(WFEZZAN7) STEP(*OMVSEX ) PGM= IEWBLINK
  IEW2278I B352 INVOCATION PARAMETERS - MAP,RENT,COMPAT(PM5)
  IEW2322I 1220  1
@@ -1183,14 +1183,14 @@ Return code 4
 1                         *** M O D U L E  M A P ***
 
  ---------------
- CLASS  D_SRCTXT          LENGTH =     132E  ATTRIBUTES = CAT, NOLOAD
+ CLASS  D_SRCTXT          LENGTH =     132B  ATTRIBUTES = CAT, NOLOAD
 
  ---------------
 
   SECTION    CLASS                                      ------- SOURCE --------
    OFFSET   OFFSET  NAME                TYPE    LENGTH  DDNAME   SEQ  MEMBER
 
-                 0  LGICDB01           CSECT      132E  SYSLIN    01  LGICDB01
+                 0  LGICDB01           CSECT      132B  SYSLIN    01  LGICDB01
         0        0     $PRIV000017        LABEL
 
  ---------------
@@ -1220,7 +1220,7 @@ Return code 4
 
  SYSLIB      02     CEE.SCEELKED
  SYSLIB      04     CICSTS.V5R4.CICS.SDFHLOAD
- SYSLIN      01     WFEZZAN.VSCODE.GENAPP.OBJ
+ SYSLIN      01     WFEZZAN.VSCODE.GENAPP.DEMO.OBJ
 1          *** SYMBOL REFERENCES NOT ASSOCIATED WITH ANY ADCON ***
 
  TYPE   SCOPE   NAME
@@ -1284,11 +1284,11 @@ Return code 4
 1SAVE OPERATION SUMMARY:
 
     MEMBER NAME         LGICDB01
-    LOAD LIBRARY        WFEZZAN.VSCODE.GENAPP.LOAD
+    LOAD LIBRARY        WFEZZAN.VSCODE.GENAPP.DEMO.LOAD
     PROGRAM TYPE        PROGRAM OBJECT(FORMAT 5 OS COMPAT LEVEL z/OS V1R8 )
     VOLUME SERIAL       Z00U01
     DISPOSITION         REPLACED
-    TIME OF SAVE        19.23.10  APR  7, 2025
+    TIME OF SAVE        15.48.23  JUN 27, 2025
 
 
 1SAVE MODULE ATTRIBUTES:
@@ -1331,7 +1331,7 @@ Return code 4
 
 
 
-1z/OS V2 R5 BINDER     19:23:10 MONDAY APRIL  7, 2025
+1z/OS V2 R5 BINDER     15:48:23 FRIDAY JUNE 27, 2025
  BATCH EMULATOR  JOB(WFEZZAN7) STEP(*OMVSEX ) PGM= IEWBLINK
  IEW2008I 0F03 PROCESSING COMPLETED.  RETURN CODE =  0.
 

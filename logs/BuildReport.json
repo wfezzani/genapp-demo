@@ -15,56 +15,56 @@
     {
       "id": "CREATE_PDS_1",
       "type": "CREATE_PDS",
-      "dataset": "WFEZZAN.VSCODE.GENAPP.COBOL",
+      "dataset": "WFEZZAN.VSCODE.GENAPP.DEMO.COBOL",
       "options": "cyl space(1,1) lrecl(80) dsorg(PO) recfm(F,B) dsntype(library)",
       "exists": true
     },
     {
       "id": "CREATE_PDS_2",
       "type": "CREATE_PDS",
-      "dataset": "WFEZZAN.VSCODE.GENAPP.COPY",
+      "dataset": "WFEZZAN.VSCODE.GENAPP.DEMO.COPY",
       "options": "cyl space(1,1) lrecl(80) dsorg(PO) recfm(F,B) dsntype(library)",
       "exists": true
     },
     {
       "id": "CREATE_PDS_3",
       "type": "CREATE_PDS",
-      "dataset": "WFEZZAN.VSCODE.GENAPP.OBJ",
+      "dataset": "WFEZZAN.VSCODE.GENAPP.DEMO.OBJ",
       "options": "cyl space(1,1) lrecl(80) dsorg(PO) recfm(F,B) dsntype(library)",
       "exists": true
     },
     {
       "id": "CREATE_PDS_4",
       "type": "CREATE_PDS",
-      "dataset": "WFEZZAN.VSCODE.GENAPP.DBRM",
+      "dataset": "WFEZZAN.VSCODE.GENAPP.DEMO.DBRM",
       "options": "cyl space(1,1) lrecl(80) dsorg(PO) recfm(F,B) dsntype(library)",
       "exists": true
     },
     {
       "id": "CREATE_PDS_5",
       "type": "CREATE_PDS",
-      "dataset": "WFEZZAN.VSCODE.GENAPP.LOAD",
+      "dataset": "WFEZZAN.VSCODE.GENAPP.DEMO.LOAD",
       "options": "cyl space(1,1) dsorg(PO) recfm(U) blksize(32760) dsntype(library)",
       "exists": true
     },
     {
       "id": "COPY_TO_PDS_1",
       "type": "COPY_TO_PDS",
-      "source": "/u/wfezzan/userbuild-vscode/GENAPP-B12/Cobol/LGICDB01.cbl",
-      "destination": "WFEZZAN.VSCODE.GENAPP.COBOL(LGICDB01)",
+      "source": "/u/wfezzan/userbuild-vscode/genapp-demo/Cobol/LGICDB01.cbl",
+      "destination": "WFEZZAN.VSCODE.GENAPP.DEMO.COBOL(LGICDB01)",
       "mode": "TEXT"
     },
     {
       "id": "DEPENDENCY_SET_1",
       "type": "DEPENDENCY_SET",
-      "file": "GENAPP-B12/Cobol/LGICDB01.cbl",
+      "file": "genapp-demo/Cobol/LGICDB01.cbl",
       "dependencySet": [
         {
           "lname": "LGPOLICY",
           "library": "SYSLIB",
           "category": "COPY",
           "sourceDir": "/u/wfezzan/userbuild-vscode/",
-          "file": "GENAPP-B12/Copybook/LGPOLICY.cpy",
+          "file": "genapp-demo/Copybook/LGPOLICY.cpy",
           "resolved": true,
           "excluded": false
         },
@@ -73,7 +73,7 @@
           "library": "SYSLIB",
           "category": "SQL INCLUDE",
           "sourceDir": "/u/wfezzan/userbuild-vscode/",
-          "file": "GENAPP-B12/Copybook/LGCMAREA.cpy",
+          "file": "genapp-demo/Copybook/LGCMAREA.cpy",
           "resolved": true,
           "excluded": false
         },
@@ -89,15 +89,15 @@
     {
       "id": "COPY_TO_PDS_2",
       "type": "COPY_TO_PDS",
-      "source": "/u/wfezzan/userbuild-vscode/GENAPP-B12/Copybook/LGPOLICY.cpy",
-      "destination": "WFEZZAN.VSCODE.GENAPP.COPY(LGPOLICY)",
+      "source": "/u/wfezzan/userbuild-vscode/genapp-demo/Copybook/LGPOLICY.cpy",
+      "destination": "WFEZZAN.VSCODE.GENAPP.DEMO.COPY(LGPOLICY)",
       "mode": "TEXT"
     },
     {
       "id": "COPY_TO_PDS_3",
       "type": "COPY_TO_PDS",
-      "source": "/u/wfezzan/userbuild-vscode/GENAPP-B12/Copybook/LGCMAREA.cpy",
-      "destination": "WFEZZAN.VSCODE.GENAPP.COPY(LGCMAREA)",
+      "source": "/u/wfezzan/userbuild-vscode/genapp-demo/Copybook/LGCMAREA.cpy",
+      "destination": "WFEZZAN.VSCODE.GENAPP.DEMO.COPY(LGCMAREA)",
       "mode": "TEXT"
     },
     {
@@ -106,22 +106,22 @@
       "command": "IGYCRCTL",
       "options": "LIB,CICS,SQL,NODYNAM,TEST(NOSEPARATE)",
       "rc": 4,
-      "file": "GENAPP-B12/Cobol/LGICDB01.cbl",
+      "file": "genapp-demo/Cobol/LGICDB01.cbl",
       "outputs": [
         {
-          "dataset": "WFEZZAN.VSCODE.GENAPP.OBJ(LGICDB01)",
+          "dataset": "WFEZZAN.VSCODE.GENAPP.DEMO.OBJ(LGICDB01)",
           "deployType": "OBJ"
         },
         {
           "dataset": "WFEZZAN.SAM.DEBUG.SYSDEBUG(LGICDB01)"
         },
         {
-          "dataset": "WFEZZAN.VSCODE.GENAPP.DBRM(LGICDB01)",
+          "dataset": "WFEZZAN.VSCODE.GENAPP.DEMO.DBRM(LGICDB01)",
           "deployType": "DBRM"
         }
       ],
       "datasets": [
-        "WFEZZAN.VSCODE.GENAPP.COBOL(LGICDB01)"
+        "WFEZZAN.VSCODE.GENAPP.DEMO.COBOL(LGICDB01)"
       ],
       "logs": [
         "/u/wfezzan/userbuild-vscode/logs/LGICDB01.log"
@@ -140,10 +140,10 @@
       "command": "IEWBLINK",
       "options": "MAP,RENT,COMPAT(PM5)",
       "rc": 0,
-      "file": "GENAPP-B12/Cobol/LGICDB01.cbl",
+      "file": "genapp-demo/Cobol/LGICDB01.cbl",
       "outputs": [
         {
-          "dataset": "WFEZZAN.VSCODE.GENAPP.LOAD(LGICDB01)",
+          "dataset": "WFEZZAN.VSCODE.GENAPP.DEMO.LOAD(LGICDB01)",
           "deployType": "CICSLOAD"
         }
       ],
